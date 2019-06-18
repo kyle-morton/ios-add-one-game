@@ -15,6 +15,7 @@
 		2398E12322B817C300A9601D /* Add1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398E12222B817C300A9601D /* Add1UITests.swift */; };
 		2398E13222B8191E00A9601D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398E13022B8191E00A9601D /* MainViewController.swift */; };
 		2398E13322B8191E00A9601D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2398E13122B8191E00A9601D /* MainViewController.xib */; };
+		2398E13622B8890700A9601D /* HVD_Comic_Serif_Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2398E13522B8890700A9601D /* HVD_Comic_Serif_Pro.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +48,9 @@
 		2398E11E22B817C300A9601D /* Add1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Add1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2398E12222B817C300A9601D /* Add1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add1UITests.swift; sourceTree = "<group>"; };
 		2398E12422B817C300A9601D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2398E13022B8191E00A9601D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2398E13122B8191E00A9601D /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		2398E13022B8191E00A9601D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
+		2398E13122B8191E00A9601D /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = ../MainViewController.xib; sourceTree = "<group>"; };
+		2398E13522B8890700A9601D /* HVD_Comic_Serif_Pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HVD_Comic_Serif_Pro.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +81,6 @@
 		2398E0F622B817BA00A9601D = {
 			isa = PBXGroup;
 			children = (
-				2398E13022B8191E00A9601D /* MainViewController.swift */,
-				2398E13122B8191E00A9601D /* MainViewController.xib */,
 				2398E10122B817BB00A9601D /* Add1 */,
 				2398E11622B817C300A9601D /* Add1Tests */,
 				2398E12122B817C300A9601D /* Add1UITests */,
@@ -101,6 +101,9 @@
 		2398E10122B817BB00A9601D /* Add1 */ = {
 			isa = PBXGroup;
 			children = (
+				2398E13522B8890700A9601D /* HVD_Comic_Serif_Pro.otf */,
+				2398E13022B8191E00A9601D /* MainViewController.swift */,
+				2398E13122B8191E00A9601D /* MainViewController.xib */,
 				2398E10222B817BB00A9601D /* AppDelegate.swift */,
 				2398E10422B817BB00A9601D /* ViewController.swift */,
 				2398E10922B817C300A9601D /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			files = (
 				2398E10D22B817C300A9601D /* LaunchScreen.storyboard in Resources */,
 				2398E13322B8191E00A9601D /* MainViewController.xib in Resources */,
+				2398E13622B8890700A9601D /* HVD_Comic_Serif_Pro.otf in Resources */,
 				2398E10A22B817C300A9601D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

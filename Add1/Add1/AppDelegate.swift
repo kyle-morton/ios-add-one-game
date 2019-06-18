@@ -12,10 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var mainVC: MainViewController?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // new instance of MVC
+        mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
+        
+        // creates new window based on screen's resolution
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        
+        // set root VC to our MV controller to init
+        window!.rootViewController = mainVC
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
