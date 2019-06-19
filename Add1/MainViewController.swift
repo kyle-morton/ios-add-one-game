@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class MainViewController: UIViewController {
 
@@ -16,8 +17,15 @@ class MainViewController: UIViewController {
     
     var score = 0
     
+    var hud:MBProgressHUD?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hud = MBProgressHUD(view:self.view)
+        if hud != nil {
+            self.view.addSubview(hud!)
+        }
         
         setRandomNumberLabel()
         updateScoreLabel()
@@ -50,16 +58,39 @@ class MainViewController: UIViewController {
             if (input - numbers == 1111){
                 print("Correct!")
                 score += 1
+                showHUDWithAnswer(isRight: true)
             } else {
                 print("Incorrect!")
                 score -= 1
-                
+                showHUDWithAnswer(isRight: false)
             }
             
         }
         
         setRandomNumberLabel()
         updateScoreLabel()
+    }
+    
+    func showHUDWithAnswer(isRight: Bool) {
+        var imageView:UIImageView?
+        
+        if isRight {
+            imageView = UIImageView(image: UIImage(named: "thumbs-up"))
+        } else {
+            imageView = UIImageView(image: UIImage(named: "thumbs-down"))
+        }
+        
+        if imageView != nil {
+            hud?.mode = MBProgressHUDMode.customView
+            hud?.customView = imageView
+            
+            hud?.show(animated: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                self.hud?.hide(animated:true)
+                self.inputField?.text = ""
+            })
+        }
     }
     
     func generateRandomString() -> String
