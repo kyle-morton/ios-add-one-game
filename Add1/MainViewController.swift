@@ -14,10 +14,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var numbersLabel:UILabel?
     @IBOutlet weak var scoreLabel:UILabel?
     @IBOutlet weak var inputField:UITextField?
+    @IBOutlet weak var timeLabel:UILabel?
     
     var score = 0
     
     var hud:MBProgressHUD?
+    var timer:Timer?
+    var seconds = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,7 @@ class MainViewController: UIViewController {
         setRandomNumberLabel()
         updateScoreLabel()
 
+        // add text-change eventhandler to input field
         inputField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
     }
     
@@ -48,6 +52,7 @@ class MainViewController: UIViewController {
             return;
         }
         
+        // validate answer when text >= 4 characters
         if let numbers_text = numbersLabel?.text,
            let input_text = inputField?.text,
            let numbers = Int(numbers_text),
@@ -69,6 +74,11 @@ class MainViewController: UIViewController {
         
         setRandomNumberLabel()
         updateScoreLabel()
+        
+        // start the timer upon initial answer
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onUpdateTimer), userInfo: nil, repeats: true)
+        }
     }
     
     func showHUDWithAnswer(isRight: Bool) {
@@ -91,6 +101,33 @@ class MainViewController: UIViewController {
                 self.inputField?.text = ""
             })
         }
+    }
+    
+    @objc func onUpdateTimer() {
+        if (seconds > 0 && seconds <= 60) {
+            seconds -= 1
+            updateTimeLabel()
+        }
+        else if (seconds == 0) {
+            if (timer != nil) {
+                timer!.invalidate()
+                timer = nil
+            }
+        }
+    }
+    
+    func updateTimeLabel() {
+        if timeLabel == nil {
+            return
+        }
+        
+        let min = (seconds / 60) % 60
+        let sec = seconds % 60
+        
+        let min_p = String(format: "%02d", min)
+        let sec_p = String(format: "%02d", sec)
+        
+        timeLabel?.text = "\(min_p):\(sec_p)"
     }
     
     func generateRandomString() -> String
