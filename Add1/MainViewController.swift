@@ -96,7 +96,7 @@ class MainViewController: UIViewController {
             
             hud?.show(animated: true)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.hud?.hide(animated:true)
                 self.inputField?.text = ""
             })
@@ -112,6 +112,21 @@ class MainViewController: UIViewController {
             if (timer != nil) {
                 timer!.invalidate()
                 timer = nil
+                
+                let alertController = UIAlertController(title: "Time's Up!", message: "You got a score of \(score)", preferredStyle:.alert)
+                
+                let restartAction = UIAlertAction(title: "Restart", style: .default, handler: nil)
+                alertController.addAction(restartAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                score = 0
+                seconds = 60
+                
+                updateTimeLabel()
+                updateScoreLabel()
+                setRandomNumberLabel()
+                
             }
         }
     }
